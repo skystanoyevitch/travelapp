@@ -31,7 +31,7 @@ const App = () => {
 			(place) => Number(place.rating) > rating
 		);
 		setFilteredPlaces(filtered);
-	}, [rating]);
+	}, [places, rating]);
 
 	// useEffect(() => {
 	// 	navigator.geolocation.getCurrentPosition(
