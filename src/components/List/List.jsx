@@ -31,7 +31,7 @@ const List = ({
 			.fill()
 			.map((_, i) => elRefs[i] || createRef());
 		setElRefs(refs);
-	}, [places]);
+	}, [elRefs, places]);
 
 	return (
 		<div className={classes.container}>

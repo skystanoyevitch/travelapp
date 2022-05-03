@@ -58,7 +58,7 @@ const App = () => {
 				setIsLoading(false);
 			});
 		}
-	}, [bounds, type]);
+	}, [bounds, type, coordinates.lat, coordinates.lng]);
 
 	return (
 		<>
