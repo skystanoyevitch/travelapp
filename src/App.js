@@ -6,13 +6,13 @@ import Map from "./components/Map/Map";
 import { CssBaseline, Grid } from "@material-ui/core";
 import { getPlacesData } from "./api";
 import { getWeatherData } from "./api";
-import { useFetchLocation } from "./useFetchLocation";
+// import { useFetchLocation } from "./useFetchLocation";
 
 const App = () => {
 	const [places, setPlaces] = useState([]);
 	const [filteredPlaces, setFilteredPlaces] = useState([]);
 
-	// const [coordinates, setCoordinates] = useState({});
+	const [coordinates, setCoordinates] = useState({});
 	const [bounds, setBounds] = useState({});
 
 	const [childClicked, setChildClicked] = useState(null);
@@ -24,7 +24,7 @@ const App = () => {
 
 	const [weatherData, setWeatherData] = useState([]);
 
-	const { coordinates, setCoordinates } = useFetchLocation();
+	// const { coordinates, setCoordinates } = useFetchLocation();
 
 	useEffect(() => {
 		const filtered = places.filter(
@@ -33,13 +33,13 @@ const App = () => {
 		setFilteredPlaces(filtered);
 	}, [places, rating]);
 
-	// useEffect(() => {
-	// 	navigator.geolocation.getCurrentPosition(
-	// 		({ coords: { latitude, longitude } }) => {
-	// 			setCoordinates({ lat: latitude, lng: longitude });
-	// 		}
-	// 	);
-	// }, []);
+	useEffect(() => {
+		navigator.geolocation.getCurrentPosition(
+			({ coords: { latitude, longitude } }) => {
+				setCoordinates({ lat: latitude, lng: longitude });
+			}
+		);
+	}, []);
 
 	useEffect(() => {
 		if (bounds.sw && bounds.ne) {
